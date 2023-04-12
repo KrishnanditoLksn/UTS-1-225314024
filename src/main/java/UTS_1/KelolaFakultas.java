@@ -1,13 +1,13 @@
 package UTS_1;
 import java.util.Scanner;
 public class KelolaFakultas {
-    static int jumlahProdi ,jumlah,mhs;
+    static int jumlahProdi ,jumlah;
     static String namaProdi , kodeProdi , Akreditasi , namaF,kodeF;
 
     public static void main(String[] args) {
 
         Prodi[]prodis;
-        Fakultas[]fakultas;
+        Fakultas fakultas;
         Scanner input  = new Scanner(System.in);
 
 
@@ -15,7 +15,16 @@ public class KelolaFakultas {
         jumlahProdi = input.nextInt();
 
         prodis = new Prodi[jumlahProdi];
-        fakultas = new Fakultas[jumlahProdi];
+        //fakultas = new Fakultas();
+
+        System.out.print("Nama Fakultas : ");
+        namaF = input.next();
+        namaF+= input.nextLine();
+
+        System.out.print("Kode Fakultas : ");
+        kodeF = input.next();
+        kodeF+= input.nextLine();
+        fakultas = new Fakultas(namaF  , kodeF,prodis);
 
         System.out.println("INPUT DATA PRODI : ");
         for(int i  = 0 ; i < prodis.length; i++){
@@ -41,13 +50,6 @@ public class KelolaFakultas {
             /*
             Input data Fakultas
              */
-            System.out.print("Nama Fakultas : ");
-            namaF = input.next();
-            namaF+= input.nextLine();
-
-            System.out.print("Kode Fakultas : ");
-            kodeF = input.next();
-            kodeF+= input.nextLine();
 
 
             prodis[i]  = new Prodi(kodeProdi , namaProdi);
@@ -55,10 +57,6 @@ public class KelolaFakultas {
             prodis[i].setNamaProdi(namaProdi);
             prodis[i].setJenjangAkreditasi(Akreditasi);
             prodis[i].setJumlahMhs(jumlah);
-            fakultas[i] = new Fakultas(namaF  , kodeF,prodis);
-            fakultas[i].setNamaFakultas(namaF);
-            fakultas[i].setKodeFakultas(kodeF);
-            fakultas[i].setDaftarProdi(prodis);
         }
 
         /*
@@ -69,10 +67,7 @@ public class KelolaFakultas {
         /*
         fakultas
          */
-        for (Fakultas fakultas1: fakultas) {
-            System.out.println(fakultas1.getNamaFakultas() + " - " + fakultas1.getKodeFakultas());
-        }
-
+        System.out.println(fakultas.getNamaFakultas() + " - " + fakultas.getKodeFakultas());
         //Fakultas fakultas1 = new Fakultas(null , null,prodis);
         /*
         PRODI DAN AKRED
